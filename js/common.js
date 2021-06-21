@@ -5,6 +5,7 @@ var osver_name = "Don\'t know";
 var devicename = "Don\'t know";
 var storename = "Don\'t know";
 var fontSize ="";
+var futtxt="";
 
 $(document).ready(function () {
     // set continer height
@@ -24,8 +25,32 @@ $(document).ready(function () {
         countRows(); //rows
         wordCount(); // word counter 
         $("#changeTime").text(getCurrentTime());// set last saved
+        $("#texttocpy").text("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n"+$("#textArea").val());
     });
 
+     $("#fontSize").on('change', function () {
+                fontSize = $(this).val();
+                changesize();
+                // settext();
+            });
+
+     $("#device_name").on('change', function () {
+                devicename = $(this).val();
+                // $("textarea").val("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n");
+                settext();
+            });
+
+     $("#android_name").on('change', function () {
+                osver_name = $(this).val();
+                // $("textarea").val("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n");
+                settext();
+            });
+
+     $("#appstore_name").on('change', function () {
+                storename = $(this).val();
+                // $("textarea").val("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n");
+                settext();
+            }); 
 
    /* $('.dropdown-item').on('click',  function(){
         var btnObj = $(this).parent().siblings('button');
@@ -37,7 +62,7 @@ $(document).ready(function () {
 
         // $("#textArea").text(osver+", "+ devicename+", "+storename);
     });*/
-    $("#osver li").click(function(){
+    /*$("#osver li").click(function(){
         $("#osver_sel").text($(this).text());
         osver_name = $(this).text();
         settext();
@@ -60,12 +85,15 @@ $(document).ready(function () {
         fontSize = $(this).text();
         changesize();
         settext();
-    });
+    });*/
 
     $("#copytxt").click(function(){
+        // futtxt=$("#textArea").val();
+    // $("textarea").text("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n"+futtxt);
+    // $("textarea").val("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n");
     $("textarea").select();
     document.execCommand('copy');
-});
+    });
 
     // osver= $("#osver").value;//text();
 
@@ -76,6 +104,7 @@ function changesize(){
 function settext()
 {
     $("#textArea").val("Hey,\nI downloaded the app from "+ storename+".\nOS: " + osver_name +"\nDevice: "+ devicename+"\n\n The issue I am currently facing is ");
+    lstxt();
     // settextformal();
 }
 function settextstd()
@@ -92,8 +121,8 @@ function settextformal()
 // set continer height
 function setMainContHeight()
 {
-    dataBarHeight = $("div")[0].scrollHeight+75;
-    textAreaPaddtop = $("div")[13].scrollHeight;
+    dataBarHeight = $("#classOne")[0].scrollHeight+75;
+    textAreaPaddtop = $("#classTwo")[0].scrollHeight;
     // $("#textAreaCont").height($(window).height());
     $("textArea").height($(window).height() - (dataBarHeight + textAreaPaddtop));
     // $("textArea").height((dataBarHeight + textAreaPaddtop));

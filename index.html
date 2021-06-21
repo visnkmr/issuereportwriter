@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <!-- <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> -->
 
 
     <script type="text/javascript" src="js/common.js"></script>
@@ -29,12 +29,15 @@
               background-color: black;
               /*font-size: 22px;*/
             }
+            .padall{
+              margin: 10px;
+            }
     </style>
 </head>
 <body>
-  <div class="classOne">
+  <div id="classOne">
   <div class="text-center col-12 top-buffer">
-        <strong style="color:white; font-size: 22px;">Choose from options below if applicable; then type in the issue you are facing.<br/>At the end copy the whole text and paste it in the relevant issues page after filling in the issue you faced.</strong>
+        <strong style="color:white;">Choose from options below if applicable; then type in the issue you are facing.<br/>At the end copy the whole text and paste it in the relevant issues page after filling in the issue you faced.</strong>
       </div>
 
       <!-- <div class="row text-center">
@@ -43,79 +46,69 @@
                 <div class="col-sm-12 col-md-3 text">Characters: <span id="characterCount">0</span> </div>
                 <div class="col-sm-12 col-md-3 text">Word Count: <span id="wordCount">0</span> </div>
     </div> -->
-    <div class="row text-center">
-                <div class="col-sm-12 col-md-4 text">
-                    <div class="dropdown"><strong style="color:white; font-size: 22px;">Which device are you using? </strong>
-                    <button class="btn dropdown-toggle" type="button" id="devname_sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="devname_sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                      Choose one
-                    </button>
-                    <div class="dropdown-menu" id="devname">
-                      <li class="dropdown-item">Amazon Fire TV</li>
-                      <li class="dropdown-item">Android TV</li>
-                      <li class="dropdown-item">Amazon Fire Tablet</li>
-                      <li class="dropdown-item">Android Mobile Phone</li>
-                      <li class="dropdown-item">Android Tablet</li>
-                      <li class="dropdown-item">Chromecast with Google TV</li>
-                    </div>
-                  </div>
-                </div>
+    <div class="padall row text-center">
+      <div class="col-sm-12 col-md-4 text">
+        <strong>Which device are you using?</strong>
+        <select class="selectpicker" id="device_name">
+          <option value="" disabled selected>Choose one</option>
+          <option value="Amazon Fire TV"> Amazon Fire TV</option>
+          <option value="Android TV"> Android TV</option>
+          <option value="Amazon Fire Tablet"> Amazon Fire Tablet</option>
+          <option value="Android Mobile Phone"> Android Mobile Phone</option>
+          <option value="Android Tablet"> Android Tablet</option>
+          <option value="Chromecast with Google TV"> Chromecast with Google TV</option>
+      </select>
+      </div>
 
-                  <div class="col-sm-12 col-md-4 text">
-                  <!-- Last Saved: <span id="changeTime">0</span>  -->
-                  <div class="dropdown"><strong style="color:white; font-size: 22px;">Fire/Android OS version:</strong>
-                    <button class="btn dropdown-toggle" type="button" id="osver_sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Choose one
-                    </button>
-                    <div class="dropdown-menu" id="osver">
-                      <li class="dropdown-item">Android 10</li>
-                      <li class="dropdown-item">Android 9 (Pie) (Fire OS 7)</li>
-                      <li class="dropdown-item">Android 8 (Oreo)</li>
-                      <li class="dropdown-item">Android 7 (Nougat) (Fire OS 6)</li>
-                      <li class="dropdown-item">Android 6 (Marshmallow)</li>
-                      <li class="dropdown-item">Android 5 (Lollipop) (Fire OS 5)</li>
-                      <li class="dropdown-item">Android 4 and below</li>
-                    </div>
-                  </div>
-                  </div>
-
-                  <div class="col-sm-12 col-md-4 text">
-                    <div class="dropdown"><strong style="color:white; font-size: 22px;">Where you downloaded the app from?</strong>
-                    <button class="btn dropdown-toggle" type="button" id="storename_sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Choose one
-                    </button>
-                    <div class="dropdown-menu" id="storename">
-                      <li class="dropdown-item">Google Play</li>
-                      <li class="dropdown-item">Amazon Appstore</li>
-                      <li class="dropdown-item"></li>
-                    </div>
-                  </div>
-                </div>
-    </div>
-  </div>
-    <div id="textAreaCont" class="form-group col-12 top-buffer fill">
-        <textarea id="textArea" style="background-color:black; color:white; font-size: 22px;" class="form-control top-buffer text fill" placeholder="Choose from options above if applicable; then type in the issue you are facing. At the end copy the whole text and paste it in the relevant issues page after filling in the issue you faced."></textarea>
+        <div class="col-sm-12 col-md-4 text">
+        <!-- Last Saved: <span id="changeTime">0</span>  -->
+        <strong>Fire/Android OS version:</strong>
+        <select class="selectpicker" id="android_name">
+          <option value="" disabled selected>Choose one</option>
+            <option value="Android 10">Android 10</option>
+            <option value="Android 9 (Pie) (Fire OS 7)">Android 9 (Pie) (Fire OS 7)</option>
+            <option value="Android 8 (Oreo)">Android 8 (Oreo)</option>
+            <option value="Android 7 (Nougat) (Fire OS 6)">Android 7 (Nougat) (Fire OS 6)</option>
+            <option value="Android 6 (Marshmallow)">Android 6 (Marshmallow)</option>
+            <option value="Android 5 (Lollipop) (Fire OS 5)">Android 5 (Lollipop) (Fire OS 5)</option>
+            <option value="Android 4 and below">Android 4 and below</option>
+          </select>
         </div>
 
-      <div class="classTwo">
-        <div class="row text-center">
+        <div class="col-sm-12 col-md-4 text">
+          <strong>Where you downloaded the app from?</strong>
+          <select class="selectpicker" id="appstore_name">
+              <option value="" disabled selected>Choose one</option>
+              <option value="Google Play">Google Play</option>
+              <option value="Amazon Appstore">Amazon Appstore</option>
+              <option value="Other">Other</option>
+          </select>
+        </div>
+  </div>
+</div>
+<!-- <div class=" col-12 group row text-center"> -->
+    <div id="textAreaCont" class="padall form-group top-buffer fill">
+        <textarea id="textArea" style="background-color:black; color:white;" class="form-control top-buffer text fill" placeholder="Choose from options above if applicable; then type in the issue you are facing. At the end copy the whole text and paste it in the relevant issues page after filling in the issue you faced."></textarea>
+        <!-- </div>
+        <div class="col-6">
+          <div class="container text"><p id="texttocpy" >assadas</p></div>
+        </div> -->
+</div>
+      <div id="classTwo">
+        <div class="row text-center col-12">
                 <!-- <div class="col-sm-12 col-md-4 top-buffer"><strong>Background color </strong><input type="color" id="backgroundColor" value="#000000"/></div>
                 <div class="col-sm-12 col-md-4 top-buffer"><strong>Font color </strong><input type="color" id="fontColor" value="#ffffff" /></div> -->
-                <div class="col-sm-12 col-md-6 top-buffer text">
-                  <div class="dropdown"><strong style="color:white; font-size: 22px;">Font size </strong> 
-                    <button class="btn dropdown-toggle" type="button" id="fsize_sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Choose one
-                    </button>
-                    <div class="dropdown-menu" id="fsize">
-                      <li class="dropdown-item">18</li>
-                      <li class="dropdown-item">20</li>
-                      <li class="dropdown-item">22</li>
-                      <li class="dropdown-item">24</li>
-                      <li class="dropdown-item">26</li>
-                      <li class="dropdown-item">28</li>
-                      <li class="dropdown-item">30</li>
-                    </div>
-                  </div>
+                <div class="col-6 text">
+                  <strong>Font size </strong>
+                  <select class="selectpicker" id="fontSize">
+                  <option value="18">18</option>
+                  <option value="20">20</option>
+                  <option value="22">22</option>
+                  <option value="24">24</option>
+                  <option value="26">26</option>
+                  <option value="28">28</option>
+                  <option value="30">30</option>
+                </select>
                   <!-- <strong>Font size </strong> 
                   <select class="selectpicker" id="fontSize">
                   <option value="18">18</option>
@@ -127,14 +120,11 @@
                   <option value="30">30</option>
                 </select> -->
                 </div>
-                <div class="col-sm-12 col-md-6 top-buffer text">
-                 <button type="button" class="btn btn-primary btn-lg" id="copytxt">Copy Text</button>
+                <div class="col-6 text">
+                 <button type="button" class="btn btn-primary" id="copytxt">Copy Text</button>
                </div>
         
-        </div> 
-        <div class="text-center col-12 bottom-buffer">
-            <strong style="color:white; font-size: 22px;">If you try to select options at the top after writing the issue. You will lose your entered tex.<br/>In case that happens refresh the page.</strong>
-        </div> 
+        </div>
     </div>
 </body>
 </html>

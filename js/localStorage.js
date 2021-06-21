@@ -1,5 +1,5 @@
 ﻿// global vars
-var addonName = "clearWrite";
+var addonName = "issuereportwriter";
 
 // get from local storage vars
 var textAreaValue = localStorage.getItem(addonName + "_textAreaVal");
@@ -61,7 +61,10 @@ $(document).ready(function () {
 
 })
 
-
+function lstxt(){
+    localStorage.setItem(addonName + "_textAreaVal", $("textarea").val());
+        // localStorage.setItem(addonName + "_textAreaLastChanged", getCurrentTime());
+}
 function countRows() {
     var t = $("textarea")[0];
     $("#linecount").text(t.value.substr(0, t.selectionStart).split("\n").length);
